@@ -118,8 +118,7 @@ h1, h2, h3 { margin: 0; line-height: 1.1; }
 .topbar.is-scrolled { border-color: var(--cream-2); box-shadow: 0 4px 20px -12px rgb(22 71 47 / .4); }
 .topbar__inner { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 
-.brand { display: flex; align-items: center; gap: .5rem; text-decoration: none; color: var(--green); font-weight: 700; font-size: 1.02rem; }
-.brand b { font-weight: 800; }
+.brand { display: flex; align-items: center; gap: .5rem; text-decoration: none; color: var(--green); font-weight: 800; font-size: 1.05rem; }
 .brand__leaf { width: 28px; height: 28px; fill: var(--leaf); flex: none; }
 
 .menu { display: flex; gap: .25rem; }
@@ -348,7 +347,7 @@ h1, h2, h3 { margin: 0; line-height: 1.1; }
 .player video { background: #000; object-fit: contain; }
 
 /* ---------- Parceiros ---------- */
-.partners__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.partners__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem 2rem; }
 .partner { border-left: 4px solid var(--yellow); padding: .25rem 0 .25rem 1rem; }
 .partner h3 { color: var(--green); font-size: 1.1rem; font-weight: 800; margin-bottom: .35rem; }
 .partner p { margin: 0; color: var(--muted); }
