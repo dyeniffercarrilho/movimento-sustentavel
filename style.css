@@ -2,7 +2,7 @@
    Movimento Sustentável — cores tiradas do folder
    ========================================================= */
 :root {
-  color-scheme: light dark; /* veja o bloco "modo escuro" logo abaixo */
+  color-scheme: light; /* preserva a identidade visual clara no celular */
   --green: #16472f;      /* verde escuro do folder */
   --green-2: #1f5c3d;
   --leaf: #7fab45;       /* verde folha */
