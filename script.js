@@ -46,30 +46,41 @@ revealEls.forEach(el => { el.classList.add('reveal'); reveal.observe(el); });
 // ---------- Galeria: filtros + "ver mais" ----------
 const items = [...document.querySelectorAll('.gallery__item')];
 const chips = [...document.querySelectorAll('.chip')];
-const LIMIT = 8;            // fotos visíveis por vez
+const LIMIT = 8;
 let filter = 'todas';
-let visibleCount = LIMIT;
-
+let expanded = false;
+const gallery = document.querySelector('.gallery');
 const moreBtn = document.createElement('button');
 moreBtn.type = 'button';
 moreBtn.className = 'btn btn--ghost gallery__more';
-document.querySelector('.gallery').after(moreBtn);
+moreBtn.setAttribute('aria-controls', 'galeria-fotos');
+gallery.id = 'galeria-fotos';
+gallery.after(moreBtn);
 
 function renderGallery() {
   const match = items.filter(it => filter === 'todas' || it.dataset.cat === filter);
+  const limit = filter === 'todas' && !expanded ? LIMIT : match.length;
   items.forEach(it => { it.hidden = true; });
-  match.forEach((it, i) => { it.hidden = i >= visibleCount; });
-  const hiddenCount = Math.max(0, match.length - visibleCount);
-  moreBtn.hidden = hiddenCount === 0;
-  if (hiddenCount > 0) moreBtn.textContent = `Ver mais ${Math.min(LIMIT, hiddenCount)} foto${Math.min(LIMIT, hiddenCount) === 1 ? "" : "s"}`;
+  match.forEach((it, i) => { it.hidden = i >= limit; });
+  const remaining = Math.max(0, match.length - LIMIT);
+  moreBtn.hidden = filter !== 'todas' || remaining === 0;
+  if (!moreBtn.hidden) {
+    moreBtn.textContent = expanded ? 'Mostrar menos' : `Ver mais ${remaining} foto${remaining === 1 ? '' : 's'}`;
+    moreBtn.setAttribute('aria-expanded', String(expanded));
+  }
 }
 chips.forEach(chip => chip.addEventListener('click', () => {
   filter = chip.dataset.filter;
-  visibleCount = LIMIT;
+  expanded = false;
   chips.forEach(c => { c.classList.toggle('is-active', c === chip); c.setAttribute('aria-pressed', c === chip); });
   renderGallery();
 }));
-moreBtn.addEventListener('click', () => { visibleCount += LIMIT; renderGallery(); });
+moreBtn.addEventListener('click', () => {
+  const collapsing = expanded;
+  expanded = !expanded;
+  renderGallery();
+  if (collapsing) gallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
 renderGallery();
 
 // ---------- Lightbox ----------
