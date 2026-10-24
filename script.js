@@ -46,9 +46,9 @@ revealEls.forEach(el => { el.classList.add('reveal'); reveal.observe(el); });
 // ---------- Galeria: filtros + "ver mais" ----------
 const items = [...document.querySelectorAll('.gallery__item')];
 const chips = [...document.querySelectorAll('.chip')];
-const LIMIT = 12;           // fotos visíveis antes de "ver mais"
+const LIMIT = 8;            // fotos visíveis por vez
 let filter = 'todas';
-let expanded = false;
+let visibleCount = LIMIT;
 
 const moreBtn = document.createElement('button');
 moreBtn.type = 'button';
@@ -58,18 +58,18 @@ document.querySelector('.gallery').after(moreBtn);
 function renderGallery() {
   const match = items.filter(it => filter === 'todas' || it.dataset.cat === filter);
   items.forEach(it => { it.hidden = true; });
-  match.forEach((it, i) => { it.hidden = !expanded && i >= LIMIT; });
-  const hiddenCount = match.length - LIMIT;
-  moreBtn.hidden = expanded || hiddenCount <= 0;
-  moreBtn.textContent = `Ver mais ${hiddenCount} fotos`;
+  match.forEach((it, i) => { it.hidden = i >= visibleCount; });
+  const hiddenCount = Math.max(0, match.length - visibleCount);
+  moreBtn.hidden = hiddenCount === 0;
+  if (hiddenCount > 0) moreBtn.textContent = `Ver mais ${Math.min(LIMIT, hiddenCount)} foto${Math.min(LIMIT, hiddenCount) === 1 ? "" : "s"}`;
 }
 chips.forEach(chip => chip.addEventListener('click', () => {
   filter = chip.dataset.filter;
-  expanded = false;
+  visibleCount = LIMIT;
   chips.forEach(c => { c.classList.toggle('is-active', c === chip); c.setAttribute('aria-pressed', c === chip); });
   renderGallery();
 }));
-moreBtn.addEventListener('click', () => { expanded = true; renderGallery(); });
+moreBtn.addEventListener('click', () => { visibleCount += LIMIT; renderGallery(); });
 renderGallery();
 
 // ---------- Lightbox ----------
