@@ -268,7 +268,7 @@ h1, h2, h3 { margin: 0; line-height: 1.1; }
 .footer__inner { display: grid; gap: 1.75rem; }
 .footer__brand { font-family: var(--font-display); font-size: 1.5rem; color: var(--yellow); letter-spacing: .5px; margin-bottom: .25rem !important; }
 .footer__credits {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem 2rem; align-items: start;
+  display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 1.5rem clamp(2.5rem, 6vw, 5rem); align-items: start;
   padding-top: 1.75rem; border-top: 1px solid rgb(248 243 230 / .15);
 }
 .footer__label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--yellow); opacity: .85; margin-bottom: .4rem !important; }
