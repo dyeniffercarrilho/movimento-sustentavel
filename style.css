@@ -423,7 +423,7 @@ h1, h2, h3 { margin: 0; line-height: 1.1; }
   .wave { height: 44px; }
   .wave--to-green.wave--top { top: -43px; }
   .invite { margin-top: 44px; }
-  .footer__layout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer__credits { grid-template-columns: 1fr; }
   .footer { padding-bottom: 5rem; } /* espaço pro botão de voltar ao topo */
   .lightbox__nav { top: auto !important; bottom: 20px; transform: none !important; }
 }
@@ -458,13 +458,3 @@ h1, h2, h3 { margin: 0; line-height: 1.1; }
 
 /* Garante que o botão desapareça quando não houver mais fotos. */
 .gallery__more[hidden] { display: none; }
-
-/* Rodapé: quatro blocos alinhados e responsivos */
-.footer__layout { display: grid; grid-template-columns: 1.2fr .9fr 1.4fr 1.2fr; gap: 1.5rem; align-items: start; }
-.footer__layout > div { min-width: 0; }
-.footer__layout .footer__credits { display: contents; }
-.footer__layout .footer__top { min-width: 0; }
-.footer__layout .footer__credits > div { min-width: 0; }
-.footer__layout .footer__credits { padding: 0; border: 0; }
-@media (max-width: 900px) { .footer__layout { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .footer__layout { grid-template-columns: 1fr; gap: 1.35rem; } }
