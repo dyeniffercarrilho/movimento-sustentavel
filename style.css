@@ -336,8 +336,7 @@ h1, h2, h3 { margin: 0; line-height: 1.1; }
 .timeline-hint { display: none; }
 
 /* ---------- Filtros da galeria ---------- */
-.filters { display: flex; gap: .5rem; overflow-x: auto; padding-bottom: .5rem; margin-bottom: 1.25rem; scrollbar-width: none; }
-.filters::-webkit-scrollbar { display: none; }
+.filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
 .chip {
   flex: none; min-height: 42px; padding: 0 1.1rem; border-radius: 999px; cursor: pointer;
   border: 2px solid var(--green); background: transparent; color: var(--green);
@@ -443,6 +442,7 @@ h1, h2, h3 { margin: 0; line-height: 1.1; }
   .gallery { grid-template-columns: repeat(3, 1fr); gap: .5rem; }
   .gallery__item { border-radius: 12px; }
   .steps { grid-template-columns: 1fr; }
+  .chip { min-height: 40px; padding: 0 .9rem; font-size: .9rem; }
   .guardians { padding: 1.5rem 1.15rem; }
   .timeline { grid-auto-columns: 78%; margin-right: -16px; padding-right: 16px; }
 }
