@@ -282,12 +282,18 @@ h1, h2, h3 { margin: 0; line-height: 1.1; }
 .invite__inner p { font-size: 1.15rem; color: rgb(248 243 230 / .9); margin-top: 1rem; }
 
 /* Rodapé */
-.footer { background: #0f3522; color: rgb(248 243 230 / .85); padding: 2.5rem 0 2rem; position: relative; }
-.footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; align-items: flex-end; }
-.footer p { margin: 0; }
-.footer__brand { font-family: var(--font-display); font-size: 1.4rem; color: var(--yellow); letter-spacing: .5px; }
-.footer__label { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; opacity: .7; }
-.footer__love { font-weight: 700; margin-top: 1.75rem !important; padding-top: 1.25rem; border-top: 1px solid rgb(248 243 230 / .15); }
+.footer { background: #0f3522; color: rgb(248 243 230 / .85); padding: 3rem 0 2rem; position: relative; }
+.footer p { margin: 0; line-height: 1.55; }
+.footer__inner { display: grid; gap: 1.75rem; }
+.footer__brand { font-family: var(--font-display); font-size: 1.5rem; color: var(--yellow); letter-spacing: .5px; margin-bottom: .25rem !important; }
+.footer__credits {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem 2rem; align-items: start;
+  padding-top: 1.75rem; border-top: 1px solid rgb(248 243 230 / .15);
+}
+.footer__label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--yellow); opacity: .85; margin-bottom: .4rem !important; }
+.footer__credits p:not(.footer__label):not(.footer__note) { font-weight: 700; color: var(--cream); }
+.footer__note { font-size: .9rem; opacity: .75; margin-top: .15rem !important; }
+.footer__love { font-weight: 700; padding-top: 1.25rem; border-top: 1px solid rgb(248 243 230 / .15); }
 .to-top {
   position: fixed; right: 16px; bottom: 16px; z-index: 40;
   width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
@@ -437,7 +443,8 @@ h1, h2, h3 { margin: 0; line-height: 1.1; }
   .wave { height: 44px; }
   .wave--to-green.wave--top { top: -43px; }
   .invite { margin-top: 44px; }
-  .footer__inner { flex-direction: column; align-items: flex-start; }
+  .footer__credits { grid-template-columns: 1fr; }
+  .footer { padding-bottom: 5rem; } /* espaço pro botão de voltar ao topo */
   .lightbox__nav { top: auto !important; bottom: 20px; transform: none !important; }
 }
 
